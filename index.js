@@ -31,7 +31,16 @@ app.all('/*', (req, res) => {
         }
 
         // Special cases for custom response
-        const foundIndex = listCustomResponse.find( func => func(req, res) );
+        const foundIndex = listCustomResponse.find( customResponse => {
+            if ( ! customResponse.regex.test( req.url ) ) {
+                return false;
+            }
+
+            console.log('Custom response regex is found: ', customResponse.regex.toString());
+            customResponse.func(req, res);
+
+            return true;
+        });
 
         if ( foundIndex === undefined ) {
             console.log('Custom response regex is not found!');
