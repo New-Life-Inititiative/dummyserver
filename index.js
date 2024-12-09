@@ -17,7 +17,7 @@ app.all('/*', (req, res) => {
     try {
         console.log('\n');
 
-        // req.url: '\dummy\json'
+        // req.url: '\json'
         console.log('req.url: ', req.url);
 
         // Special cases for certain URL such as favicon.ico on Browser or custom response
@@ -51,21 +51,23 @@ app.all('/*', (req, res) => {
         let url;
 
         if ( platform === 'win32' ) {
-            // req.url: /dummy/json
-            // url (AFTER):  \dummy\json
+            // req.url: /json
+            // url (AFTER):  \json
             url = req.url.replaceAll('/','\\');
         } else {
             url = req.url;
         }
 
+        // dummyDir is the main directory in which the dummy messages are in
+        const dummyDir = 'dummy';
         const fileName = 'index.txt';
 
-        // path.join: 'C:\Dev64\workspace_personal\serverdummy' + '\dummy\json' + 'index.txt'
-        console.log('path.join: ', path.join( __dirname , url , fileName ));
+        // path.join: 'C:\Dev64\workspace_personal\serverdummy' + 'dummy' + '\json' + 'index.txt'
+        console.log('path.join: ', path.join( __dirname , dummyDir , url , fileName ));
         // End of get directory and file path for dummy response message part
 
         // Set dummy response message
-        fs.readFile( path.join( __dirname , url , fileName ) , 'utf8', ( err , data ) => {
+        fs.readFile( path.join( __dirname , dummyDir , url , fileName ) , 'utf8', ( err , data ) => {
             if ( err ) {
                 console.error('Error fs.readFile: ', err);
 
