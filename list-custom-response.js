@@ -1,5 +1,5 @@
 const listCustomResponse = [   {
-    regex: new RegExp('(\/dummy\/json\/status\/200)'),
+    regex: new RegExp('(\/json\/status\/200)'),
     func: (req, res) => {
         // Custom response
         res.statusCode = 200;
@@ -7,7 +7,7 @@ const listCustomResponse = [   {
     }
 }
 ,   {
-    regex: new RegExp('(\/dummy\/json\/status\/401)'),
+    regex: new RegExp('(\/json\/status\/401)'),
     func: (req, res) => {
         // Custom response
         res.statusCode = 401;
@@ -15,7 +15,7 @@ const listCustomResponse = [   {
     }
 }
 ,   {
-    regex: new RegExp('(\/dummy\/json\/status\/501)'),
+    regex: new RegExp('(\/json\/status\/501)'),
     func: (req, res) => {
         // Custom response
         res.statusCode = 501;
