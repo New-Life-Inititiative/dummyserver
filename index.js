@@ -17,6 +17,7 @@ app.all('/*', (req, res) => {
     try {
         console.log('\n');
 
+        console.log('Timestamp: ', new Date());
         // req.url: '\json'
         console.log('req.url: ', req.url);
 
